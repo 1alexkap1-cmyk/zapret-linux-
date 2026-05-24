@@ -8,9 +8,10 @@ This project is a port of the popular Windows `zapret-discord-youtube` DPI bypas
 ## ⚙️ Installation
 
 1. **Clone the repository:**
+   You can clone this repository anywhere you like. For example:
    ```bash
-   git clone https://github.com/flowseal/zapret-discord-youtube.git /opt/zapret-discord-youtube
-   cd /opt/zapret-discord-youtube
+   git clone https://github.com/flowseal/zapret-discord-youtube.git
+   cd zapret-discord-youtube
    ```
 
 2. **Install dependencies and compile nfqws:**
@@ -31,20 +32,14 @@ sudo ./start.sh
 To stop the bypass, simply press `Ctrl+C`. The script will automatically clean up the `iptables` rules upon exit.
 
 ### Run as a Systemd Service (Background / Auto-start)
-If you want the bypass to run automatically in the background and start on boot:
+If you want the bypass to run automatically in the background and start on boot, you can use the included setup script. This script will automatically create the systemd service file pointing to wherever you cloned the repository.
 
-1. **Install the service:**
+1. **Install and start the service:**
    ```bash
-   sudo cp zapret-discord-youtube.service /etc/systemd/system/
-   sudo systemctl daemon-reload
+   sudo ./install_service.sh
    ```
 
-2. **Start and enable the service:**
-   ```bash
-   sudo systemctl enable --now zapret-discord-youtube.service
-   ```
-
-3. **Check the status:**
+2. **Check the status:**
    ```bash
    sudo systemctl status zapret-discord-youtube.service
    ```

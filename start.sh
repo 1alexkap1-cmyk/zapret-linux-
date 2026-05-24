@@ -45,6 +45,9 @@ cleanup() {
 # Trap signals for clean exit
 trap cleanup EXIT SIGINT SIGTERM
 
+# Run cleanup before starting to ensure no stale rules exist
+cleanup > /dev/null 2>&1
+
 echo "Setting up iptables rules..."
 # Add rules
 iptables -t mangle -I PREROUTING -p tcp -m multiport --dports $TCP_PORTS -j NFQUEUE --queue-num $QNUM --queue-bypass
